@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
-    Created on : 21/06/2020, 16:12:12
-    Author     : Giovanni
+    Created on : Jun 21, 2020, 3:30:35 PM
+    Author     : Gio
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,9 +9,26 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Db WebApp - Projeto POO</title>
+        <title>Pagina Inicial - Projeto 02</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="WEB-INF/jspf/header.jspf"%>
+                <table border="1">
+            <caption>Melhores 10 resultados</caption>
+            <tr>
+                <th>Nome</th>
+                <th>Resultado</th>
+            </tr>
+     
+        </table>
+        <table border=="1">
+            <caption>Ultimos 10 resultados</caption>
+            <tr>
+                <th>Nome</th>
+                <th>Resultado</th>
+            </tr>
+ 
+        </table>
+    <%//}%>
     </body>
 </html>
