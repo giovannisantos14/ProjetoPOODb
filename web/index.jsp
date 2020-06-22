@@ -4,6 +4,8 @@
     Author     : Gio
 --%>
 
+<%@page import="web.DbListener"%>
+<%@page import="db.Quiz"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,7 +21,12 @@
                 <th>Nome</th>
                 <th>Resultado</th>
             </tr>
-     
+            <%for(Quiz q: Quiz.getQuizzes()){%>
+            <tr>
+                <td><%=q.getNome()%></td>
+                <td><%=q.getAcertos()%></td>
+            </tr>    
+             <%}%>
         </table>
         <table border=="1">
             <caption>Ultimos 10 resultados</caption>

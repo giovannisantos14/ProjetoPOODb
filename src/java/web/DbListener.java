@@ -5,8 +5,9 @@
  */
 package web;
 
-//import db.Category;
-//import db.Transaction;
+import db.Quiz;
+import db.Questao;
+import db.Resposta;
 import db.Usuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,10 +22,10 @@ import javax.servlet.ServletContextListener;
 /**
  * Web application lifecycle listener.
  *
- * @author Giovanni
+ * @author Felipe Borreli
  */
 public class DbListener implements ServletContextListener {
-    public static final String URL = "jdbc:sqlite:quiz.db";
+    public static final String URL = "jdbc:sqlite:C:/Users/PC-Venda/quiz.db";
     
     public static String exceptionMessage = null;
 
@@ -50,19 +51,19 @@ public class DbListener implements ServletContextListener {
             
             step = "Criação dos usuarios padrão";
             if(Usuario.getUsuarios().isEmpty()){
-                SQL = "INSERT INTO tb_usuarios (nm_usuario, "
+                SQL = "INSERT INTO tb_usuario (nm_usuario, "
                                             + "nm_login, "
                                             + "nm_senha, "
-                                            + "nm_role) "
+                                            + "nm_cargo) "
                     + "VALUES ('Administrador', "
                         + "'admin', "
                         + "'"+("admin".hashCode())+"', "
                         + "'ADMIN') ";
                 stmt.executeUpdate(SQL);
-                SQL = "INSERT INTO users(nm_usuario, "
+                SQL = "INSERT INTO tb_usuario(nm_usuario, "
                         + "nm_login, "
                         + "nm_senha, "
-                        + "nm_role) "
+                        + "nm_cargo) "
                     + "VALUES('João da Silva', "
                         + "'joao', "
                         + "'"+("123".hashCode())+"', "
@@ -81,6 +82,24 @@ public class DbListener implements ServletContextListener {
                     + ")";
             stmt.executeUpdate(SQL);
             
+            step = "Criação dos quizzes padrão";
+            if(Quiz.getQuizzes().isEmpty()){
+                SQL = "INSERT INTO tb_quiz (nm_quiz, "
+                                            + "qt_acertos, "
+                                            + "cd_usuario) "
+                    + "VALUES ('Administrador - 1', "
+                        + "9, "
+                        + "1) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_quiz (nm_quiz, "
+                                            + "qt_acertos, "
+                                            + "cd_usuario) "
+                    + "VALUES ('Joao - 1', "
+                        + "5, "
+                        + "2) ";
+                stmt.executeUpdate(SQL);       
+            }
+            
             step = "Criação da tabela tb_questao";
             SQL = "CREATE TABLE IF NOT EXISTS tb_questao("
                         + "cd_questao INTEGER PRIMARY KEY, "
@@ -88,17 +107,105 @@ public class DbListener implements ServletContextListener {
                     + ")";
             stmt.executeUpdate(SQL);
             
+            step = "Criação das questões padrão";
+            if(Questao.getQuestoes().isEmpty()){
+                SQL = "INSERT INTO tb_questao (ds_questao) "
+                    + "VALUES ('Com quantos paus se faz uma canoa?') ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_questao (ds_questao) "
+                    + "VALUES ('Teste?') ";
+                stmt.executeUpdate(SQL);      
+            }
             
             step = "Criação da tabela tb_resposta";
-            SQL = "CREATE TABLE IF NOT EXISTS tb_resposta("
+            SQL = "CREATE TABLE IF NOT EXISTS tb_resposta( "
                         + "cd_questao INTEGER NOT NULL,"
-                        + "cd_resposta INTEGER NOT NULL, "
+                        + "cd_resposta SMALLINT NOT NULL, "
                         + "ds_resposta VARCHAR(300) NOT NULL, "
                         + "ic_correta SMALLINT NOT NULL, "
                     + "PRIMARY KEY (cd_questao, cd_resposta), "
-                    + "FOREIGN KEY (cd_questao)"
+                    + "FOREIGN KEY (cd_questao) "
+                    + "REFERENCES tb_questao (cd_questao)"
                     + ")";
             stmt.executeUpdate(SQL);
+            
+            step = "Criação das respostas padrão";
+            if(Resposta.getRespostas(1).isEmpty()){
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (1, "
+                        + "1, "
+                        + "'5',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (1, "
+                        + "2, "
+                        + "'3',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (1, "
+                        + "3, "
+                        + "'1',"
+                        + "1) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (1, "
+                        + "4, "
+                        + "'7',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+            }
+            if(Resposta.getRespostas(2).isEmpty()){
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (2, "
+                        + "1, "
+                        + "'TESTE1',"
+                        + "1) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (2, "
+                        + "2, "
+                        + "'TESTE2',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (2, "
+                        + "3, "
+                        + "'TESTE3',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (2, "
+                        + "4, "
+                        + "'TESTE4',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+            }
             
             stmt.close();
             conn.close();

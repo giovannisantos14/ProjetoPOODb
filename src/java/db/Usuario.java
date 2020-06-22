@@ -28,7 +28,7 @@ public class Usuario {
         Class.forName("org.sqlite.JDBC");
         Connection conn = DriverManager.getConnection(DbListener.URL);
         Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM tb_usuarios");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM tb_usuario");
         while(rs.next()){
             list.add(new Usuario(
                     rs.getInt("cd_usuario"),
