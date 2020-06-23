@@ -25,7 +25,7 @@ import javax.servlet.ServletContextListener;
  * @author Felipe Borreli
  */
 public class DbListener implements ServletContextListener {
-    public static final String path = System.getProperty("user.home") + "/quiz.db";
+    public static final String path = System.getProperty("user.home") + "/Documents/NetBeansProjects/ProjetoPOODb/quiz.db";
     public static final String URL = "jdbc:sqlite:" + path;
     
     public static String exceptionMessage = null;
