@@ -13,15 +13,15 @@
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf"%>
-        <% //if(session.getAttribute("user.login")==null){%>
+        <% if(session.getAttribute("user.login")==null){%>
             <h3>Você precisa estar logado para ver o questionário!</h3>
-        <% //} else{%>
+        <% } else{%>
             <h3>Questionário</h3>
             <form action="processamento/questionario_process.jsp" method="post">
                 
                 
                 <input type="submit" value="resultado" name="resultado.submit"/>
             </form>
-        <% //}%>
+        <% }%>
     </body>
 </html>
