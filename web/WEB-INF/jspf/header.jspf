@@ -2,10 +2,15 @@
 <%@ page pageEncoding="UTF-8" %>
 <h1>Projeto 03 - Questionário</h1>
 <%if(session.getAttribute("user.login") == null){%>
-        <p style="border-bottom: 1px solid black">Você não está logado, para responder as perguntas você deve efetuar um login ou criar uma nova conta.</p>
+        <a href="<%=request.getContextPath()%>/index.jsp">Home</a><br>
+        <p style="border-bottom: 1px solid black">Você não está logado, para responder as perguntas você
+            deve <a href="login.jsp">efetuar um login</a> ou <a href="cadastro.jsp">criar uma nova conta</a>.</p>
     <%} else {%>
-        <h3>Bem vindo, <%session.getAttribute("user.name");%></h3><br>
-        <p style="border-bottom: 1px solid black"><a href="index.jsp">Home</a> | 
-            <a href="questionario.jsp">Questionário</a><%if(session.getAttribute("user.role").equals("ADMIN")){%>
-             | <a href="restrict/usuarios.jsp">Usuários</a>
+        <form method="post" action="<%=request.getContextPath()%>/login.jsp">
+            Bem vindo, <a href="<%=request.getContextPath()%>/perfil.jsp"><%= session.getAttribute("user.name")%></a>
+            <input type="submit" value="LogOff" name="session.logoff"/>
+        </form><br>
+        <p style="border-bottom: 1px solid black"><a href="<%=request.getContextPath()%>/index.jsp">Home</a> | 
+            <a href="<%=request.getContextPath()%>/questionario.jsp">Questionário</a><%if(session.getAttribute("user.role").equals("ADMIN")){%>
+             | <a href="<%=request.getContextPath()%>/restrict/usuarios.jsp">Usuários</a>
             <%}}%>
