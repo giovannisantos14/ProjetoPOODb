@@ -26,7 +26,7 @@ public class Questao {
         Class.forName("org.sqlite.JDBC");
         Connection conn = DriverManager.getConnection(DbListener.URL);
         Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM tb_questao");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM tb_questao LIMIT 10");
         while(rs.next()){
             list.add(new Questao(
                     rs.getInt("cd_questao"),

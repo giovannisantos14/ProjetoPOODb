@@ -31,6 +31,7 @@
             if(user==null){
                 loginError = "Login or password incorrect";
             }else{
+                session.setAttribute("user.id", user.getCodigo());
                 session.setAttribute("user.login", login);
                 session.setAttribute("user.name", user.getNome());
                 session.setAttribute("user.role", user.getCargo());
@@ -40,6 +41,7 @@
             loginError = "Error: " + ex.getMessage();
         }
     }else if(request.getParameter("session.logoff")!=null){
+        session.removeAttribute("user.id");
         session.removeAttribute("user.login");
         session.removeAttribute("user.name");
         session.removeAttribute("user.role");

@@ -68,9 +68,9 @@ public class Quiz {
                                   int codigo_usuario) throws Exception{
         Class.forName("org.sqlite.JDBC");
         Connection con = DriverManager.getConnection(DbListener.URL);
-        String SQL = "INSERT INTO tb_quiz(nm_quiz, "
+        String SQL = "INSERT INTO tb_quiz (nm_quiz, "
                                           + "qt_acertos, "
-                                          + "cd_usuario "
+                                          + "cd_usuario) "
                    + "VALUES(?,?,?)";
         PreparedStatement stmt = con.prepareStatement(SQL);
         stmt.setString(1, nome);
@@ -90,6 +90,27 @@ public class Quiz {
         stmt.execute();
         stmt.close();
         con.close();
+    }
+    
+    public static int getNumeroQuiz(int codigo_usuario) throws Exception{
+        int numero;
+        Class.forName("org.sqlite.JDBC");
+        Connection con = DriverManager.getConnection(DbListener.URL);
+        String SQL = "SELECT COUNT(cd_quiz)+1 as numero "
+                   + "FROM tb_quiz "
+                   + "WHERE cd_usuario = ?";
+        PreparedStatement stmt = con.prepareStatement(SQL);
+        stmt.setInt(1, codigo_usuario);
+        ResultSet rs = stmt.executeQuery();
+        if(rs.next()){
+            numero = rs.getInt("numero");
+        } else {
+            numero = -1;
+        }
+        rs.close();
+        stmt.close();
+        con.close();
+        return numero;
     }
 
     public Quiz(int codigo, String nome, int acertos) {
