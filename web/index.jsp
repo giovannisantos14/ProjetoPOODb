@@ -8,6 +8,9 @@
 <%@page import="db.Quiz"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    int codigo_usuario = -1;
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -15,6 +18,10 @@
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf"%>
+        <%if(session.getAttribute("user.login") != null){%>
+        <% codigo_usuario = Integer.parseInt(session.getAttribute("user.id").toString()); %>
+        <p>A média de seus resultados é: <%=Double.toString(Quiz.getMediaUsuario(codigo_usuario))%></p>
+        <%}%>
                 <table border="1">
             <caption>Melhores 10 resultados</caption>
             <tr>
@@ -52,7 +59,6 @@
                     <th>Nome</th>
                     <th>Resultado</th>
                 </tr>
-                <% int codigo_usuario = Integer.parseInt(session.getAttribute("user.id").toString()); %>
                 <%for(Quiz q: Quiz.getQuizzesUsuario(10, codigo_usuario)){%>
                 <tr>
                     <td><%=q.getNome()%></td>

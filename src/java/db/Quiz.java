@@ -118,6 +118,28 @@ public class Quiz {
         return quiz;
     }
     
+    public static double getMediaUsuario(int codigo_usuario) throws Exception{
+        double media;
+        Class.forName("org.sqlite.JDBC");
+        Connection con = DriverManager.getConnection(DbListener.URL);
+        String SQL = "SELECT CAST(SUM(qt_acertos) AS REAL)/CAST(COUNT(cd_quiz) AS DOUBLE) AS media "
+                    + "FROM tb_quiz "
+                    + "WHERE cd_usuario = ?;";
+        PreparedStatement stmt = con.prepareStatement(SQL);
+        stmt.setInt(1, codigo_usuario);
+        ResultSet rs = stmt.executeQuery();
+        if(rs.next()){
+            media = rs.getDouble("media");
+        } else {
+            media = -1.0;
+        }
+        rs.close();
+        stmt.close();
+        con.close();
+        System.out.print(media);
+        return media;
+    }
+    
     public static void addQuiz(String nome, 
                                   int acertos, 
                                   int codigo_usuario) throws Exception{
