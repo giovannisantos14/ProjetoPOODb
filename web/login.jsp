@@ -29,7 +29,7 @@
         try{
             Usuario user = Usuario.getUsuario(login, password);
             if(user==null){
-                loginError = "Login or password incorrect";
+                loginError = "Login ou senha incorretos";
             }else{
                 session.setAttribute("user.id", user.getCodigo());
                 session.setAttribute("user.login", login);
@@ -50,25 +50,26 @@
 %>
 <html>
     <head>
-        <%if(requestException != null){%>
-                    <div>Erro ao cadastrar novo usuário:<%= requestException.getMessage()%></div>
-        <%}%>
-        <%if(loginError != null){%>
-            <div>Erro: <%= loginError%></div>
-        <%}%>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login - Projeto 03</title>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf"%>
+        <%if(requestException != null){%>
+            <div style="color: red">Erro ao cadastrar novo usuário:<%= requestException.getMessage()%></div>
+        <%}%>
+        <%if(loginError != null){%>
+            <div style="color: red">Erro: <%= loginError%></div>
+        <%}%>
+        
         <%if(session.getAttribute("user.login") != null){%>
             <h2>Você já esta logado, redirecionando para tela principal...</h2>
             <meta http-equiv="refresh" content="0; url=index.jsp" />
         <%} else{%> 
             <form method="post">
                 <div>Bem vindo, por favor, insira seu login e senha:</div>    
-                Usuário: <input type="text" name="user.login"/>
-                Senha: <input type="password" name="user.password"/>
+                Usuário: <input type="text" name="user.login" required/>
+                Senha: <input type="password" name="user.password" required/>
                 <input type="submit" value="LogIn" name="session.login"/>
             </form>
         <%}%>
