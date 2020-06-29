@@ -122,6 +122,24 @@ public class DbListener implements ServletContextListener {
                 SQL = "INSERT INTO tb_questao (ds_questao) "
                     + "VALUES ('Qual o livro mais vendido no mundo a seguir à Bíblia?') ";
                 stmt.executeUpdate(SQL); 
+                SQL = "INSERT INTO tb_questao (ds_questao) "
+                    + "VALUES ('Quais os países que têm a maior e a menor expectativa de vida do mundo?') ";
+                stmt.executeUpdate(SQL); 
+                SQL = "INSERT INTO tb_questao (ds_questao) "
+                    + "VALUES ('Qual o número mínimo de jogadores numa partida de futebol?') ";
+                stmt.executeUpdate(SQL); 
+                SQL = "INSERT INTO tb_questao (ds_questao) "
+                    + "VALUES ('Quais as duas datas que são comemoradas em novembro?') ";
+                stmt.executeUpdate(SQL); 
+                SQL = "INSERT INTO tb_questao (ds_questao) "
+                    + "VALUES ('Quem pintou \"Guernica\"?') ";
+                stmt.executeUpdate(SQL); 
+                SQL = "INSERT INTO tb_questao (ds_questao) "
+                    + "VALUES ('Em que ordem surgiram os modelos atômicos?') ";
+                stmt.executeUpdate(SQL); 
+                SQL = "INSERT INTO tb_questao (ds_questao) "
+                    + "VALUES ('Em que período da pré-história o fogo foi descoberto?') ";
+                stmt.executeUpdate(SQL); 
             }
             
             step = "Criação da tabela tb_resposta";
@@ -326,6 +344,288 @@ public class DbListener implements ServletContextListener {
                 stmt.executeUpdate(SQL);
             }
             
+            if(Resposta.getRespostas(5).isEmpty()){
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (5, "
+                        + "1, "
+                        + "'Japão e Serra Leoa',"
+                        + "1) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (5, "
+                        + "2, "
+                        + "'Austrália e Afeganistão',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (5, "
+                        + "3, "
+                        + "'Itália e Chade',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (5, "
+                        + "4, "
+                        + "'Brasil e Congo',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (5, "
+                        + "5, "
+                        + "'Estados Unidos e Angola',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+            }
+            if(Resposta.getRespostas(6).isEmpty()){
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (6, "
+                        + "1, "
+                        + "'8',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (6, "
+                        + "2, "
+                        + "'10',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (6, "
+                        + "3, "
+                        + "'9',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (6, "
+                        + "4, "
+                        + "'5',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (6, "
+                        + "5, "
+                        + "'7',"
+                        + "1) ";
+                stmt.executeUpdate(SQL);
+            }
+            if(Resposta.getRespostas(7).isEmpty()){
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (7, "
+                        + "1, "
+                        + "'Independência do Brasil e Dia da Bandeira',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (7, "
+                        + "2, "
+                        + "'Proclamação da República e Dia Nacional da Consciência Negra',"
+                        + "1) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (7, "
+                        + "3, "
+                        + "'Dia do Médico e Dia de São Lucas',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (7, "
+                        + "4, "
+                        + "'Dia de Finados e Dia Nacional do Livro',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (7, "
+                        + "5, "
+                        + "'Black Friday e Dia da Árvore',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+            }
+            if(Resposta.getRespostas(8).isEmpty()){
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (8, "
+                        + "1, "
+                        + "'Paul Cézanne',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (8, "
+                        + "2, "
+                        + "'Pablo Picasso',"
+                        + "1) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (8, "
+                        + "3, "
+                        + "'Diego Rivera',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (8, "
+                        + "4, "
+                        + "'Tarsila do Amaral',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (8, "
+                        + "5, "
+                        + "'Salvador Dalí',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+            }
+            if(Resposta.getRespostas(9).isEmpty()){
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (9, "
+                        + "1, "
+                        + "'Thomson, Dalton, Rutherford, Rutherford-Bohr',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (9, "
+                        + "2, "
+                        + "'Rutherford-Bohr, Rutherford, Thomson, Dalton',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (9, "
+                        + "3, "
+                        + "'Dalton, Rutherford-Bohr, Thomson, Rutherford',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (9, "
+                        + "4, "
+                        + "'Dalton, Thomson, Rutherford-Bohr, Rutherford',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (9, "
+                        + "5, "
+                        + "'Dalton, Thomson, Rutherford, Rutherford-Bohr',"
+                        + "1) ";
+                stmt.executeUpdate(SQL);
+            }
+            if(Resposta.getRespostas(10).isEmpty()){
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (10, "
+                        + "1, "
+                        + "'Neolítico',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (10, "
+                        + "2, "
+                        + "'Paleolítico',"
+                        + "1) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (10, "
+                        + "3, "
+                        + "'Idade dos Metais',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (10, "
+                        + "4, "
+                        + "'Período da Pedra Polida',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (10, "
+                        + "5, "
+                        + "'Idade Média',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+            }
             stmt.close();
             conn.close();
             
