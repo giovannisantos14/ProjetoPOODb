@@ -84,7 +84,7 @@ public class DbListener implements ServletContextListener {
             stmt.executeUpdate(SQL);
             
             step = "Criação dos quizzes padrão";
-            if(Quiz.getQuizzes().isEmpty()){
+            if(Quiz.getQuizzes(-1).isEmpty()){
                 SQL = "INSERT INTO tb_quiz (nm_quiz, "
                                             + "qt_acertos, "
                                             + "cd_usuario) "

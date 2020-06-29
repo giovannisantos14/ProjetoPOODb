@@ -22,12 +22,67 @@ public class Quiz {
     private String nome;
     private int acertos;
     
-    public static ArrayList<Quiz> getQuizzes() throws Exception{
+    public static ArrayList<Quiz> getQuizzes(int limite) throws Exception{
         ArrayList<Quiz> list = new ArrayList<>();
         Class.forName("org.sqlite.JDBC");
         Connection conn = DriverManager.getConnection(DbListener.URL);
         Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM tb_quiz");
+        String SQL = "SELECT * FROM tb_quiz ORDER BY cd_quiz DESC ";
+        if (limite > 0){
+            SQL += "LIMIT "+Integer.toString(limite);
+        }
+        
+        ResultSet rs = stmt.executeQuery(SQL);
+        while(rs.next()){
+            list.add(new Quiz(
+                    rs.getInt("cd_quiz"),
+                    rs.getString("nm_quiz"),
+                    rs.getInt("qt_acertos"))
+            );
+        }
+        rs.close();
+        stmt.close();
+        conn.close();
+        return list;
+    }
+    
+    public static ArrayList<Quiz> getMelhoresQuizzes(int limite) throws Exception{
+        ArrayList<Quiz> list = new ArrayList<>();
+        Class.forName("org.sqlite.JDBC");
+        Connection conn = DriverManager.getConnection(DbListener.URL);
+        Statement stmt = conn.createStatement();
+        String SQL = "SELECT * FROM tb_quiz ORDER BY qt_acertos DESC ";
+        if (limite > 0){
+            SQL += "LIMIT "+Integer.toString(limite);
+        }
+        
+        ResultSet rs = stmt.executeQuery(SQL);
+        while(rs.next()){
+            list.add(new Quiz(
+                    rs.getInt("cd_quiz"),
+                    rs.getString("nm_quiz"),
+                    rs.getInt("qt_acertos"))
+            );
+        }
+        rs.close();
+        stmt.close();
+        conn.close();
+        return list;
+    }
+    
+    public static ArrayList<Quiz> getQuizzesUsuario(int limite, 
+                                                    int codigo_usuario) throws Exception{
+        ArrayList<Quiz> list = new ArrayList<>();
+        Class.forName("org.sqlite.JDBC");
+        Connection conn = DriverManager.getConnection(DbListener.URL);
+//        Statement stmt = conn.createStatement();
+        String SQL = "SELECT * FROM tb_quiz WHERE cd_usuario = ? ORDER BY cd_quiz DESC ";
+        if (limite > 0){
+            SQL += "LIMIT "+Integer.toString(limite);
+        }
+        PreparedStatement stmt = conn.prepareStatement(SQL);
+        stmt.setInt(1, codigo_usuario);
+        ResultSet rs = stmt.executeQuery();
         while(rs.next()){
             list.add(new Quiz(
                     rs.getInt("cd_quiz"),

@@ -21,21 +21,45 @@
                 <th>Nome</th>
                 <th>Resultado</th>
             </tr>
-            <%for(Quiz q: Quiz.getQuizzes()){%>
+            <%for(Quiz q: Quiz.getMelhoresQuizzes(10)){%>
             <tr>
                 <td><%=q.getNome()%></td>
                 <td><%=q.getAcertos()%></td>
-            </tr>    
+            </tr>
              <%}%>
         </table>
+        <br>
+        <br>
         <table border=="1">
-            <caption>Ultimos 10 resultados</caption>
+            <caption>Últimos 10 resultados</caption>
             <tr>
                 <th>Nome</th>
                 <th>Resultado</th>
             </tr>
- 
+            <%for(Quiz q: Quiz.getQuizzes(10)){%>
+            <tr>
+                <td><%=q.getNome()%></td>
+                <td><%=q.getAcertos()%></td>
+            </tr>
+             <%}%>
         </table>
-    <%//}%>
+        <%if(session.getAttribute("user.login") != null){%>
+            <br>
+            <br>
+            <table border=="1">
+                <caption>Últimos 10 resultados de <%=session.getAttribute("user.name")%></caption>
+                <tr>
+                    <th>Nome</th>
+                    <th>Resultado</th>
+                </tr>
+                <% int codigo_usuario = Integer.parseInt(session.getAttribute("user.id").toString()); %>
+                <%for(Quiz q: Quiz.getQuizzesUsuario(10, codigo_usuario)){%>
+                <tr>
+                    <td><%=q.getNome()%></td>
+                    <td><%=q.getAcertos()%></td>
+                </tr>
+                 <%}%>
+            </table>
+        <%}%>
     </body>
 </html>
