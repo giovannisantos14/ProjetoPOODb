@@ -114,8 +114,14 @@ public class DbListener implements ServletContextListener {
                     + "VALUES ('Com quantos paus se faz uma canoa?') ";
                 stmt.executeUpdate(SQL);
                 SQL = "INSERT INTO tb_questao (ds_questao) "
-                    + "VALUES ('Teste?') ";
-                stmt.executeUpdate(SQL);      
+                    + "VALUES ('De quem é a famosa frase “Penso, logo existo”?') ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_questao (ds_questao) "
+                    + "VALUES ('De onde é a invenção do chuveiro elétrico?') ";
+                stmt.executeUpdate(SQL); 
+                SQL = "INSERT INTO tb_questao (ds_questao) "
+                    + "VALUES ('Qual o livro mais vendido no mundo a seguir à Bíblia?') ";
+                stmt.executeUpdate(SQL); 
             }
             
             step = "Criação da tabela tb_resposta";
@@ -168,6 +174,15 @@ public class DbListener implements ServletContextListener {
                         + "'7',"
                         + "0) ";
                 stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (1, "
+                        + "5, "
+                        + "'9',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
             }
             if(Resposta.getRespostas(2).isEmpty()){
                 SQL = "INSERT INTO tb_resposta (cd_questao, "
@@ -176,8 +191,8 @@ public class DbListener implements ServletContextListener {
                                             + "ic_correta) "
                     + "VALUES (2, "
                         + "1, "
-                        + "'TESTE1',"
-                        + "1) ";
+                        + "'Platão',"
+                        + "0) ";
                 stmt.executeUpdate(SQL);
                 SQL = "INSERT INTO tb_resposta (cd_questao, "
                                             + "cd_resposta, "
@@ -185,7 +200,7 @@ public class DbListener implements ServletContextListener {
                                             + "ic_correta) "
                     + "VALUES (2, "
                         + "2, "
-                        + "'TESTE2',"
+                        + "'Galileu Galilei',"
                         + "0) ";
                 stmt.executeUpdate(SQL);
                 SQL = "INSERT INTO tb_resposta (cd_questao, "
@@ -194,8 +209,8 @@ public class DbListener implements ServletContextListener {
                                             + "ic_correta) "
                     + "VALUES (2, "
                         + "3, "
-                        + "'TESTE3',"
-                        + "0) ";
+                        + "'Descartes',"
+                        + "1) ";
                 stmt.executeUpdate(SQL);
                 SQL = "INSERT INTO tb_resposta (cd_questao, "
                                             + "cd_resposta, "
@@ -203,7 +218,110 @@ public class DbListener implements ServletContextListener {
                                             + "ic_correta) "
                     + "VALUES (2, "
                         + "4, "
-                        + "'TESTE4',"
+                        + "'Sócrates',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (2, "
+                        + "5, "
+                        + "'Francis Bacon',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+            }
+            if(Resposta.getRespostas(3).isEmpty()){
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (3, "
+                        + "1, "
+                        + "'França',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (3, "
+                        + "2, "
+                        + "'Inglaterra',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (3, "
+                        + "3, "
+                        + "'Brasil',"
+                        + "1) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (3, "
+                        + "4, "
+                        + "'Austrália',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (3, "
+                        + "5, "
+                        + "'Itália',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+            }
+            if(Resposta.getRespostas(4).isEmpty()){
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (4, "
+                        + "1, "
+                        + "'O Senhor dos Anéis',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (4, "
+                        + "2, "
+                        + "'Dom Quixote',"
+                        + "1) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (4, "
+                        + "3, "
+                        + "'O Pequeno Príncipe',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (4, "
+                        + "4, "
+                        + "'Ela, a Feiticeira',"
+                        + "0) ";
+                stmt.executeUpdate(SQL);
+                SQL = "INSERT INTO tb_resposta (cd_questao, "
+                                            + "cd_resposta, "
+                                            + "ds_resposta,"
+                                            + "ic_correta) "
+                    + "VALUES (4, "
+                        + "5, "
+                        + "'Um Conto de Duas Cidades',"
                         + "0) ";
                 stmt.executeUpdate(SQL);
             }
